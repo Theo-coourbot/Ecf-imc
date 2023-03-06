@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { useNavigate } from "react-router-dom";
+
 import { SIGN_IN_URL, SIGN_UP_URL } from "../../firebaseConfig";
 
 
@@ -21,7 +21,7 @@ export const signInAction = createAsyncThunk(
         const data = await response.json()
         
         // Le retour d'un thunk sera ce qui peuplera à terme le action.payload
-        return data 
+        return data
     }
     )
     

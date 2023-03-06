@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { setImc } from "./imcSlice"
+import { addImc, setImc } from "./imcSlice"
 
 export const CalcIMC = () => {
     const weightRef = useRef()
@@ -14,9 +14,15 @@ export const CalcIMC = () => {
 
     const weight = weightRef.current.value
     const size = sizeRef.current.value
-  
     const imc = +weight / Math.pow(size,2)
+  const imcValue = {
+    weight : weight,
+    size : size,
+    imc : imc
+
+  }
     dispatch(setImc(imc))
+    dispatch(addImc(imcValue))
     navigate(`/result`)
     
   }

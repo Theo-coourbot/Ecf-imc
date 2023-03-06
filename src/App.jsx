@@ -8,9 +8,11 @@ import { removeUser } from './routes/auth/authSlice';
 
 function App() {
   const isLogged = useSelector (state => state.auth.islogged)
+  const user = useSelector (state => state.auth.user)
   const dispatch = useDispatch()
   const navigate  = useNavigate()
-  console.log(isLogged)
+  // console.log(isLogged)
+  // console.log(user)
 
   const disconect = () => {
     dispatch(removeUser())
@@ -33,7 +35,9 @@ function App() {
     <div className="d-flex  ">
           <NavLink to={`/signIn`}  className="btn btn-outline-info m-2" >log-in</NavLink>
     <NavLink  to={`/signUp`} className="btn btn-outline-success m-2" > sign-up</NavLink> 
-    </div> : <button className="ms-auto btn btn-outline-danger m-2" onClick={disconect}>Sign-Out </button>
+    </div> : <div className='d-flex'><button className="ms-auto btn btn-outline-danger m-2" onClick={disconect}>Sign-Out </button>
+    <NavLink to={`/listeImc`} className="ms-auto btn btn-outline-info m-2">liste Imc</NavLink>
+    <NavLink to={`/calculeIMC`} className="ms-auto btn btn-outline-success m-2">calcule mon IMC</NavLink></div>
       }
         
     
