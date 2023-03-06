@@ -1,7 +1,8 @@
 
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, redirect } from "react-router-dom";
 
 import App from "./App";
+import ProtectedRoute from "./compenant/protectedroute";
 import SignInForm from "./routes/auth/signinform";
 import SignUpForm from "./routes/auth/signupform";
 import { Error } from "./routes/error/error";
@@ -9,16 +10,7 @@ import { CalcIMC } from "./routes/imc/calcimc";
 import { ImcList } from "./routes/imc/imcListe";
 import { ResultImc } from "./routes/imc/resultImc";
 
-// const connected = (isloggedChecked) => {
-//     const islogged = localStorage.getItem('islogged')
-//     console.log(islogged)
-  
-//     if (islogged === isloggedChecked) {
-//       return true
-//     } else {
-//       return redirect(`/`)
-//     }
-// }
+
 
 
 
@@ -36,16 +28,16 @@ import { ResultImc } from "./routes/imc/resultImc";
           element : <SignUpForm/> 
         },
           {  path : "/calculeIMC",
-          element : <CalcIMC/>,
-        //   loader: () => connected('true')
+          element : <ProtectedRoute><CalcIMC/></ProtectedRoute>,
+         
         },
           {  path : "/result",
-          element : <ResultImc/>,
-        //   loader: () => connected('true')
+          element : <ProtectedRoute><ResultImc/></ProtectedRoute>,
+         
         },
           {  path : "/listeImc",
-          element : <ImcList/>,
-        //   loader: () => connected('true')
+          element : <ProtectedRoute><ImcList/></ProtectedRoute>,
+          
         }
         ]
     }
