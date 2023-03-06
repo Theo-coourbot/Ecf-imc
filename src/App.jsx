@@ -4,6 +4,10 @@ import './App.css';
 import {  Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from './routes/auth/authSlice';
+import { fetchImc } from './routes/imc/imcSlice';
+import { useEffect } from 'react';
+
+
 
 
 function App() {
@@ -13,12 +17,15 @@ function App() {
   const navigate  = useNavigate()
   // console.log(isLogged)
   // console.log(user)
-
+  
   const disconect = () => {
     dispatch(removeUser())
     navigate(`/`)
   }
-
+  useEffect(() => {
+        dispatch(fetchImc())
+      }, [dispatch])
+  
   return (
     <>
     <nav>
@@ -53,7 +60,7 @@ function App() {
 </>
 
 
-  );
+);
 }
 
 export default App;

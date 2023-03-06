@@ -6,6 +6,7 @@ import { addImc, setImc } from "./imcSlice"
 export const CalcIMC = () => {
     const weightRef = useRef()
   const sizeRef = useRef()
+  const dateRef = useRef()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -13,9 +14,12 @@ export const CalcIMC = () => {
     event.preventDefault()
 
     const weight = weightRef.current.value
+    const date = dateRef.current.value
     const size = sizeRef.current.value
     const imc = +weight / Math.pow(size,2)
   const imcValue = {
+    
+    date : date,
     weight : weight,
     size : size,
     imc : imc
@@ -42,6 +46,10 @@ export const CalcIMC = () => {
       <div className="mb-3">
         <label htmlFor="size" className="form-label">Taille (en m): </label>
         <input type="text" id="size" required ref={sizeRef} className="form-control" placeholder="1.70"/>
+      </div>
+      <div className="mb-3">
+        <label htmlFor="size" className="form-label">Date du test : </label>
+        <input type="date" id="size" required ref={dateRef} className="form-control" placeholder="1.70"/>
       </div>
       <div className="text-end">
         <button className='btn btn-primary mb-2'>valider</button>

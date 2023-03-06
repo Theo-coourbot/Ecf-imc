@@ -85,7 +85,7 @@ const ImcSlice = createSlice({
 
 
 
-export const { setImc, addImcAction } = ImcSlice.actions
+export const { setImc,addImcAction } = ImcSlice.actions
 
 export default ImcSlice.reducer
 
